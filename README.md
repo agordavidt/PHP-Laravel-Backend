@@ -7,4 +7,4 @@ The language of data science.  R ranks top for softwares used most often in data
 - Has a great community around it
 - has over 9000 packages available
 
--
+- To be continued.
