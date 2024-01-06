@@ -22,7 +22,7 @@
         <div class="row">
       
           <div class="col-md-12">
-            <form action="POST" class="p-4 border rounded" action="{{ route('login') }}">
+            <form method="POST" class="p-4 border rounded" action="{{ route('login') }}">
             @csrf
 
               <div class="row form-group">
