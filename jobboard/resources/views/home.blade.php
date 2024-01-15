@@ -119,7 +119,7 @@
   <ul class="job-listings mb-5">
     @foreach($jobs as $job)
       <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-        <a href="job-single.html"></a>
+        <a href="{{ route('single.job', $job->id)}}"></a>
         <div class="job-listing-logo">
           <img src="{{ asset('assets/images/'.$job->image.' ') }}" alt="company logo" class="img-fluid">
         </div>
@@ -128,6 +128,7 @@
           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
             <h2>{{ $job->job_title }}</h2>
             <strong>{{ $job->company }}</strong>
+            
           </div>
           <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
             <span class="icon-room"></span>{{ $job->job_region }} 
@@ -242,7 +243,7 @@
 
 </section>
 
-<section class="pt-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
+<section class="pt-5 bg-image overlay-primary fixed overlay" style="background-image: url('{{ asset('assets/images/hero_1.jpg') }}'); margin-bottom: -24px;">
 <div class="container">
   <div class="row">
     <div class="col-md-6 align-self-center text-center text-md-left mb-5 mb-md-0">
