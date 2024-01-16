@@ -27,6 +27,9 @@ class Job extends Model
         'education_experience',
         'other_benefits',
         'image',
+        'category_id',
+        'created_at',
+        'updated_at'
     ];
 
     # laravel timestamp

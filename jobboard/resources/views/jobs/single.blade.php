@@ -9,8 +9,8 @@
           <div class="col-md-7">
             <h1 class="text-white font-weight-bold">{{ $job->job_title }}</h1>
             <div class="custom-breadcrumbs">
-              <a href="#">Home</a> <span class="mx-2 slash">/</span>
-              <a href="#">Job</a> <span class="mx-2 slash">/</span>
+              <a href="{{ url('/') }}">Home</a> <span class="mx-2 slash">/</span>
+              <a href="{{ route('single.job', $job->id)}}">Job</a> <span class="mx-2 slash">/</span>
               <span class="text-white"><strong>{{ $job->job_title }}</strong></span>
             </div>
           </div>
@@ -25,7 +25,7 @@
           <div class="col-lg-8 mb-4 mb-lg-0">
             <div class="d-flex align-items-center">
               <div class="border p-2 d-inline-block mr-3 rounded">
-                <img src="#" alt="Image">
+                <img src="{{ asset('assets/images/'.$job->image.' ') }}" alt="Image">
               </div>
               <div>
                 <h2>{{ $job->job_title }}</h2>
@@ -89,14 +89,58 @@
             <div class="bg-light p-3 border rounded">
               <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
               <div class="px-3">
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=&quote={{ $job->job_title}}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
+                <a href="https://twitter.com/intent/tweet?text={{ $job->job_title }}&url={{ route('single.job', $job->id)}}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ route('single.job', $job->id)}}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="https://web.whatsapp.com/send?text={{ route('single.job', $job->id) }}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-whatsapp"></span></a>
               </div>
             </div>
 
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <section class="site-section" id="next" style="margin-top: -60px;">
+      <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="section-title mb-2"> {{ $relatedJobsCount }} Related Jobs</h2>
+          </div>
+        </div>
+        
+        <ul class="job-listings mb-5">
+        @foreach($relatedJobs as $job)
+          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+            <a href="{{ route('single.job', $job->id) }}"></a>
+            <div class="job-listing-logo">
+              <img src="{{ asset('assets/images/'.$job->image.' ') }}" alt="Image" class="img-fluid">
+            </div>
+
+            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                <h2>{{ $job->job_title }}</h2>
+                <strong>{{ $job->company}}</strong>
+              </div>
+              <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                <span class="icon-room"></span> {{ $job->job_region}}
+              </div>
+              <div class="job-listing-meta">
+                <span class="badge badge-danger">{{ $job->job_type}}</span>
+              </div>
+            </div>
+            
+          </li>
+        @endforeach
+             
+
+          
+        </ul>
+
+     
+
       </div>
     </section>
 
